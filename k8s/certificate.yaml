@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: gowdeem-com-tls
+spec:
+  secretName: gowdeem-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: gowdeem.com
+  dnsNames:
+    - gowdeem.com
+    - www.gowdeem.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - gowdeem.com
+          - www.gowdeem.com
