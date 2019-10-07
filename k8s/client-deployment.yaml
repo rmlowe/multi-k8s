@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       component: web
@@ -15,5 +15,6 @@ spec:
       containers:
         - name: client
           image: rmlowe/multi-client
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
